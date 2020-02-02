@@ -13,6 +13,7 @@
 		EF645EC123E72CB6003D64DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF645EBF23E72CB6003D64DC /* Main.storyboard */; };
 		EF645EC323E72CB8003D64DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF645EC223E72CB8003D64DC /* Assets.xcassets */; };
 		EF645EC623E72CB8003D64DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF645EC423E72CB8003D64DC /* LaunchScreen.storyboard */; };
+		EF645ECE23E7782E003D64DC /* Dictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF645ECD23E7782E003D64DC /* Dictionaries.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		EF645EC223E72CB8003D64DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF645EC523E72CB8003D64DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF645EC723E72CB8003D64DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF645ECD23E7782E003D64DC /* Dictionaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionaries.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				EF645EB923E72CB6003D64DC /* AppDelegate.swift */,
 				EF645EBB23E72CB6003D64DC /* SceneDelegate.swift */,
 				EF645EBD23E72CB6003D64DC /* ViewController.swift */,
+				EF645ECD23E7782E003D64DC /* Dictionaries.swift */,
 				EF645EBF23E72CB6003D64DC /* Main.storyboard */,
 				EF645EC223E72CB8003D64DC /* Assets.xcassets */,
 				EF645EC423E72CB8003D64DC /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 				EF645EBE23E72CB6003D64DC /* ViewController.swift in Sources */,
 				EF645EBA23E72CB6003D64DC /* AppDelegate.swift in Sources */,
 				EF645EBC23E72CB6003D64DC /* SceneDelegate.swift in Sources */,
+				EF645ECE23E7782E003D64DC /* Dictionaries.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
