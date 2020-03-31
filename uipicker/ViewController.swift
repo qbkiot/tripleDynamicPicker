@@ -16,9 +16,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var textFieldKKS: UITextField!
     
     //ilość UIPickerView, poniżej zadeklarowane jako Dictionary
-    var listOfMakes: [String] = [String]()
-    var listOfModels: [String] = [String]()
-    var listOfYears: [String] = [String]()
+    var listOfFirst: [String] = [String]()
+    var listOfSecond: [String] = [String]()
+    var listOfThird: [String] = [String]()
     
     //dla tych danych pierwszy poziom to jest key
     //dictionary ma być brane z serwera -> skrypt w Pythonie robiący nested dictionaries z pliku json/csv
@@ -30,11 +30,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     //var carDictionary = ["10": ["10": ["bq": ["1", "2", "3", "4", "5", "6" ]], "12": ["bq": ["1", "2", "3" ]], "20": ["bq": ["1", "2", "3" ]]], "15": ["35": ["bq": ["1", "2" ]], "45": ["bq": ["1", "2" ]]]]
     
-    var carDictionary = ["10": ["010": ["bq": ["001", "002", "003", "004", "005", "006" ]], "015": ["bq": ["001", "002", "003", "004", "005", "006", "007" ]], "252": ["bq": ["001", "002", "003", "004", "005", "006", "007", "008", "009" ]], "301": ["bq": ["001", "002", "003" ]], "302": ["bq": ["001", "002", "003" ]], "402": ["bq": ["001", "002", "003", "004", "005", "006", "007", "009", "010", "011" ]], "403": ["bq": ["001", "002", "003", "004", "005", "006", "007" ]], "404": ["bq": ["001", "002", "003", "004", "008" ]], "501": ["bq": ["001"]]], "20": ["010": ["bq": ["001", "002", "003", "004", "005", "006" ]], "015": ["bq": ["001", "002", "003", "004", "005", "006", "007", "008" ]], "301": ["bq": ["001" ]], "302": ["bq": ["001" ]], "303": ["bq": ["001" ]], "505": ["bq": ["001"]]]]
+    var inputDictionary = ["10": ["010": ["bq": ["001", "002", "003", "004", "005", "006" ]], "015": ["bq": ["001", "002", "003", "004", "005", "006", "007" ]], "252": ["bq": ["001", "002", "003", "004", "005", "006", "007", "008", "009" ]], "301": ["bq": ["001", "002", "003" ]], "302": ["bq": ["001", "002", "003" ]], "402": ["bq": ["001", "002", "003", "004", "005", "006", "007", "009", "010", "011" ]], "403": ["bq": ["001", "002", "003", "004", "005", "006", "007" ]], "404": ["bq": ["001", "002", "003", "004", "008" ]], "501": ["bq": ["001"]]], "20": ["010": ["bq": ["001", "002", "003", "004", "005", "006" ]], "015": ["bq": ["001", "002", "003", "004", "005", "006", "007", "008" ]], "301": ["bq": ["001" ]], "302": ["bq": ["001" ]], "303": ["bq": ["001" ]], "505": ["bq": ["001"]]]]
     
-    var makeRow = 0
-    var modelRow = 0
-    var yearRow = 0
+    var ofFirstRow = 0
+    var ofSecondRow = 0
+    var ofThirdRow = 0
     
     override func viewDidLoad() {
         //pobranie z pliku
@@ -42,18 +42,21 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //var carDictionary = wczytaj.wczytajWszystko()
         
         super.viewDidLoad()
-        makePicker.isHidden = true
-        modelPicker.isHidden = true
-        yearPicker.isHidden = true
+        //makePicker.isHidden = true
+        //modelPicker.isHidden = true
+        //yearPicker.isHidden = true
         //keys - "car" z przykładu, dictionary z pierwszego poziomiu
-        self.listOfMakes = Array(carDictionary.keys)
-        let firstCar = listOfMakes[0]
-        let modelsDictionary = carDictionary[firstCar]! as  Dictionary<String, Dictionary<String, [String]>>
+        self.listOfFirst = Array(inputDictionary.keys).sorted()
+        let firstCar = listOfFirst[0]
+        let modelsDictionary = inputDictionary[firstCar]! as  Dictionary<String, Dictionary<String, [String]>>
+        
         var listOfModels = Array(modelsDictionary.keys).sorted()
         let firstModel = listOfModels[0]
         let yearsDictionary = modelsDictionary[firstModel]! as Dictionary<String, [String]>
         //self
         var listOfYears = Array(yearsDictionary.keys).sorted()
+        let firstYear = listOfYears[0]
+        //let yearsDictionary = modelsDictionary[firstYear]! as [String]
         
         textFieldKKS.delegate = self
         
@@ -66,15 +69,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func setModelsList(make: String) {
-        let modelsDictionary = carDictionary[make]! as  Dictionary<String, Dictionary<String, [String]>>
-        self.listOfModels = Array(modelsDictionary.keys).sorted()
+        let modelsDictionary = inputDictionary[make]! as  Dictionary<String, Dictionary<String, [String]>>
+        self.listOfSecond = Array(modelsDictionary.keys).sorted()
     }
     func setYearsList(make: String, model: String) {
-        let modelsDictionary = carDictionary[make]! as  Dictionary<String, Dictionary<String, [String]>>
+        let modelsDictionary = inputDictionary[make]! as  Dictionary<String, Dictionary<String, [String]>>
         //let modelsList = Array(modelsDictionary.keys)
         let yearsArray = modelsDictionary[model]! as Dictionary<String, [String]>
         if let years = yearsArray["bq"] {
-            self.listOfYears = years
+            self.listOfThird = years
         }
     }
     
@@ -100,36 +103,36 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if pickerView == makePicker {
-            setModelsList(make: listOfMakes[makeRow])
+            setModelsList(make: listOfFirst[ofFirstRow])
             modelPicker.selectRow(0, inComponent: 0, animated: true)
-            return listOfMakes.count
+            return listOfFirst.count
         }
         else if pickerView == modelPicker {
-            return listOfModels.count
+            return listOfSecond.count
         }
         else {
-            return listOfYears.count
+            return listOfThird.count
         }
         
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == makePicker {
-            return listOfMakes[row]
+            return listOfFirst[row]
         }
         else if pickerView == modelPicker {
-            return listOfModels[row]
+            return listOfSecond[row]
         }
         else {
-            return listOfYears[row]
+            return listOfThird[row]
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerView == makePicker {
-            makeRow = row
-            setModelsList(make: listOfMakes[makeRow])
-            setYearsList(make: listOfMakes[makeRow], model: listOfModels[0])
+            ofFirstRow = row
+            setModelsList(make: listOfFirst[ofFirstRow])
+            setYearsList(make: listOfFirst[ofFirstRow], model: listOfSecond[0])
             modelPicker.selectRow(0, inComponent: 0, animated: true)
             yearPicker.selectRow(0, inComponent: 0, animated: true)
             self.modelPicker.reloadAllComponents()
@@ -138,21 +141,21 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             
         }
         else if pickerView == modelPicker {
-            modelRow = row
-            setYearsList(make: listOfMakes[makeRow], model: listOfModels[modelRow])
+            ofSecondRow = row
+            setYearsList(make: listOfFirst[ofFirstRow], model: listOfSecond[ofSecondRow])
             yearPicker.selectRow(0, inComponent: 0, animated: true)
             self.yearPicker.reloadAllComponents()
         }
         else {
             //delegat? do drugiego vc, połączone do jednego stringa
-            let pickerString = "\(listOfMakes[row]) \(listOfModels[row]) \(listOfYears[row])"
-            let trimmedString = pickerString.replacingOccurrences(of: " ", with: "")
-            print(pickerString)
-            print(trimmedString)
+            //let pickerString = "\(listOfFirst[row]) \(listOfSecond[row]) \(listOfThird[row])"
+            //let trimmedString = pickerString.replacingOccurrences(of: " ", with: "")
+            //print(pickerString)
+            //print(trimmedString)
             //            makePicker.isHidden = true
             //            modelPicker.isHidden = true
             //            yearPicker.isHidden = true
-            textFieldKKS.text = pickerString
+            //textFieldKKS.text = pickerString
 //            makePicker.isHiddenAnimated(value: true)
 //            modelPicker.isHiddenAnimated(value: true)
 //            yearPicker.isHiddenAnimated(value: true)
