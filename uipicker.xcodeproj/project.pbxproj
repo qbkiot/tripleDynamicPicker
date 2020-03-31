@@ -14,6 +14,8 @@
 		EF645EC323E72CB8003D64DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF645EC223E72CB8003D64DC /* Assets.xcassets */; };
 		EF645EC623E72CB8003D64DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF645EC423E72CB8003D64DC /* LaunchScreen.storyboard */; };
 		EF645ECE23E7782E003D64DC /* Dictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF645ECD23E7782E003D64DC /* Dictionaries.swift */; };
+		EF6EE83123EF448300650A77 /* DictionaryDowloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6EE83023EF448300650A77 /* DictionaryDowloader.swift */; };
+		EF925315241D1B5400F1DF35 /* TextFiles.txt in Resources */ = {isa = PBXBuildFile; fileRef = EF925314241D1B5400F1DF35 /* TextFiles.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		EF645EC523E72CB8003D64DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF645EC723E72CB8003D64DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF645ECD23E7782E003D64DC /* Dictionaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionaries.swift; sourceTree = "<group>"; };
+		EF6EE83023EF448300650A77 /* DictionaryDowloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryDowloader.swift; sourceTree = "<group>"; };
+		EF925314241D1B5400F1DF35 /* TextFiles.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TextFiles.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +65,9 @@
 				EF645EB923E72CB6003D64DC /* AppDelegate.swift */,
 				EF645EBB23E72CB6003D64DC /* SceneDelegate.swift */,
 				EF645EBD23E72CB6003D64DC /* ViewController.swift */,
+				EF6EE83023EF448300650A77 /* DictionaryDowloader.swift */,
 				EF645ECD23E7782E003D64DC /* Dictionaries.swift */,
+				EF925314241D1B5400F1DF35 /* TextFiles.txt */,
 				EF645EBF23E72CB6003D64DC /* Main.storyboard */,
 				EF645EC223E72CB8003D64DC /* Assets.xcassets */,
 				EF645EC423E72CB8003D64DC /* LaunchScreen.storyboard */,
@@ -131,6 +137,7 @@
 				EF645EC623E72CB8003D64DC /* LaunchScreen.storyboard in Resources */,
 				EF645EC323E72CB8003D64DC /* Assets.xcassets in Resources */,
 				EF645EC123E72CB6003D64DC /* Main.storyboard in Resources */,
+				EF925315241D1B5400F1DF35 /* TextFiles.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +151,7 @@
 				EF645EBE23E72CB6003D64DC /* ViewController.swift in Sources */,
 				EF645EBA23E72CB6003D64DC /* AppDelegate.swift in Sources */,
 				EF645EBC23E72CB6003D64DC /* SceneDelegate.swift in Sources */,
+				EF6EE83123EF448300650A77 /* DictionaryDowloader.swift in Sources */,
 				EF645ECE23E7782E003D64DC /* Dictionaries.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
